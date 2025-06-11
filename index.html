@@ -4,33 +4,70 @@
     <meta charset="UTF-8" />
     <title>Class Tools Hub</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Minimal styling so the UI looks okay */
+      #game-area {
+        width: 800px;
+        height: 600px;
+        border: 1px solid #000;
+        margin-bottom: 10px;
+      }
+      #content-leaderboard {
+        margin-top: 20px;
+      }
+      #mobile-back-button {
+        display: none;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        background: #333;
+        color: white;
+        padding: 5px 10px;
+        cursor: pointer;
+        z-index: 999;
+      }
+      #game-player {
+        display: none;
+      }
+      .b-action button {
+        margin-right: 10px;
+      }
+    </style>
 </head>
 <body>
     <h1 style="display:none;">Classroom Utilities</h1>
 
-    <!-- Game container expected by the script -->
-    <div id="game-area">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-    </div>
+    <!-- Your game canvas -->
+    <canvas id="game-area" width="800" height="600"></canvas>
+
+    <!-- Fullscreen toggle -->
+    <button id="fullscreen-btn">Toggle Fullscreen</button>
 
     <!-- Mobile back button (hidden by default) -->
-    <button id="mobile-back-button" style="display:none; position: fixed; top: 10px; left: 10px; z-index: 9999;">
-        Back
-    </button>
+    <div id="mobile-back-button">Back</div>
 
-    <!-- Game player container, used by the script -->
-    <div id="game-player" style="display:none;"></div>
+    <!-- Container for leaderboard -->
+    <div id="content-leaderboard" data-id="1">
+        <!-- Leaderboard will be injected here by JS -->
+    </div>
 
-    <!-- Leaderboard container -->
-    <div id="content-leaderboard" data-id="your-game-id"></div>
+    <!-- Buttons for voting/favoriting -->
+    <div class="b-action">
+        <button id="favorite">Favorite</button>
+        <button id="upvote">Upvote</button>
+        <button id="downvote">Downvote</button>
+    </div>
 
-    <!-- Comments container -->
+    <!-- Comments section -->
     <div id="comments"></div>
 
-    <!-- Scripts: jQuery first, then your game, then the new script -->
-    <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
     <script src="game.js"></script>
     <script src="script.js"></script>
+    <script>
+      // Link your fullscreen toggle to the button
+      document.getElementById('fullscreen-btn').addEventListener('click', () => {
+        if (typeof open_fullscreen === 'function') open_fullscreen();
+      });
+    </script>
 </body>
 </html>
-
