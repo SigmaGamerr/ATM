@@ -1,14 +1,36 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Class Tools Hub</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <h1 style="display:none;">Classroom Utilities</h1>
-    <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+    <!-- Game container expected by the script -->
+    <div id="game-area">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+    </div>
+
+    <!-- Mobile back button (hidden by default) -->
+    <button id="mobile-back-button" style="display:none; position: fixed; top: 10px; left: 10px; z-index: 9999;">
+        Back
+    </button>
+
+    <!-- Game player container, used by the script -->
+    <div id="game-player" style="display:none;"></div>
+
+    <!-- Leaderboard container -->
+    <div id="content-leaderboard" data-id="your-game-id"></div>
+
+    <!-- Comments container -->
+    <div id="comments"></div>
+
+    <!-- Scripts: jQuery first, then your game, then the new script -->
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
     <script src="game.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
+
